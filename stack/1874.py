@@ -1,22 +1,21 @@
-
 n = int(input())
-goal_seq = [int(input()) for _ in range(n)]
 stack = []
-
-for i in range(1,10):
-    if goal_seq[0] == i:
-        goal_seq.pop()
-        print('-')
+cur = 1
+result = []
+able = True
+for i in range(n):
+    num = int(input())
+    while cur<=num:
+        stack.append(cur)
+        cur+=1
+        result.append('+')
+    if stack[-1] == num:
+        stack.pop()
+        result.append('-')
     else:
-        stack.append(i)
-        print('+')
-
-
-
-
-# 12345678
-
-# 12
-
-# 436
-
+        able=False
+        break
+if able == True:
+    print('\n'.join(result))
+else:
+    print('NO')
